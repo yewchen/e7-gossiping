@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>人物立場與爭論清單.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%8F%AF%E9%AD%AF%E8%B2%9D%E6%B4%9B%E6%96%AF-%E5%8F%AF%E9%AD%AF-discord-%E6%BA%9D%E9%80%9A%E9%A0%BB%E9%81%93%E4%BA%BA%E7%89%A9%E7%AB%8B%E5%A0%B4%E8%88%87%E7%88%AD%E8%AB%96%E8%A9%B1%E9%A1%8C%E6%B8%85%E5%96%AE">可魯貝洛斯 (可魯) Discord 溝通頻道人物立場與爭論話題清單</h1>
+<blockquote>
+<p><strong>資料來源</strong>：[<code>message.csv</code>](file:///c:/Users/user/Downloads/e7-kero520/message.csv)（共 8,042 行、6,560 則訊息，涵蓋 147 位發言者）<br>
+<strong>紀錄時間範圍</strong>：<code>2026-11-07 09:04</code> 至 <code>2026-11-08 20:04</code> (UTC+8)</p>
+</blockquote>
+<hr>
+<h2 id="%E5%A3%B9%E4%BA%8B%E4%BB%B6%E8%83%8C%E6%99%AF%E8%88%87%E4%BA%94%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%88%B0%E5%A0%B4%E7%B8%BD%E8%A6%BD">壹、事件背景與五大核心戰場總覽</h2>
+<p>這場爭論起於《第七史詩》(Epic Seven, E7) 實況主 <strong>可魯貝洛斯（可魯，<code>keru520</code>）</strong> 發現另一位 E7 官方賽事合作主播 <strong>阿智（睿智的阿智）</strong> 的公開 Discord 群組（俗稱「智群」）長期以代稱 <strong>「影 / 影王 / 影群」</strong> 嘲諷、陰陽怪氣他（例如嘲笑他的暗飛速度、熱愛角色「暗和英」、抽卡時戲稱要「獻祭他的子孫袋／小腦」、笑他「沒種」等）。</p>
+<p>可魯隱忍數月後發布<strong>第一部影片</strong>公開點名阿智與智群截圖中的發言者（包含美籍英文圈玩家 <strong>阿哥拉 <code>froliz</code></strong>），並在自己的 DC 群開設此「溝通頻道」要求對質。然而隨著各路人馬湧入，頻道迅速從原本的主線失控分裂為<strong>五大戰場</strong>：</p>
+<ol>
+<li><strong>【主線戰場一】可魯 vs. 阿智（睿智的阿智）與智群集體霸凌</strong>
+<ul>
+<li><strong>爭點</strong>：智群拿已退坑數年的舊實況主「影子 (Shadow)」之名行指桑罵槐之實，長期將「影／影王」套在可魯身上進行團體嘲諷與抽卡獻祭梗；但正主<strong>阿智全程神隱未曾在此頻道露面</strong>，導致戰火全轉移到支線。</li>
+</ul>
+</li>
+<li><strong>【主線戰場二】可魯 (<code>keru520</code>) ＆ 挺可魯派 vs. 阿哥拉 (<code>froliz</code>) ＆ 挺阿哥拉派</strong>
+<ul>
+<li><strong>爭點</strong>：阿哥拉到場澄清自己只看英文圈 E7、根本不認識可魯，他討厭且嘲諷的對象一直是 2021 年的<strong>舊「影子」</strong>，且在智群是出了名的「複讀機（複製貼上別人的話）」與拼音選字誤植（「沒中」打成「沒種」）。</li>
+<li><strong>衝突升級</strong>：阿哥拉原只求澄清誤會，但可魯發燒醒來後發布<strong>第二部、第三部影片</strong>，表示「就算誤會又怎樣？在公開討論群亂玩下流梗、複製貼上造成我名譽受傷就該負責道歉！」阿哥拉認為遭到網暴公審，憤而轉戰巴哈姆特場外並要求可魯公開拍片道歉。</li>
+</ul>
+</li>
+<li><strong>【支線戰場三】狂熱護航派鯊寳 (<code>9__ix</code>) vs. 秩序維護派 (<code>0b_lin_k0</code>) ＆ 阿哥拉親友團</strong>
+<ul>
+<li><strong>爭點</strong>：<code>9__ix</code>（鯊寳）在可魯休息期間瘋狂開戰，不僅約阿哥拉在舊金山線下真人單挑、將所有反對者打為「智孝子」並封鎖按表情符號的人，更號召向韓國官方檢舉阿智、甚至揚言向<strong>美國移民局 (ICE)</strong> 檢舉阿哥拉自稱美國人；引發 <code>0b_lin_k0</code>、<code>tujizhengyi_47124</code> 等人怒斥他把溝通頻道變成「鯊寳一言堂」。</li>
+</ul>
+</li>
+<li><strong>【支線戰場四】衛央 (<code>yxt6826</code>) vs. 新手欸扣 (<code>ekko0228</code>) 的「RTA 代打檢舉 vs. 妨害名譽提告」大戰</strong>
+<ul>
+<li><strong>爭點</strong>：挺可魯的 <code>yxt6826</code>（衛央）不滿 <code>ekko0228</code>（新手欸扣）替阿哥拉說話，於 11/08 凌晨貼圖指控欸扣是「代打主播／代打狗」，並辱罵「代打去死一死啦」及向官方檢舉；欸扣則截圖揚言去警局報案提告拿三聯單。諷刺的是，<strong>11/08 下午可魯為了挽回朋友欸扣，親手將幫自己講話的衛央踢出群組</strong>。</li>
+</ul>
+</li>
+<li><strong>【支線戰場五】可魯的「是非題二選一」逼問 vs. 原朋友 (<code>ekko0228</code>、<code>aoi.cc</code>) 與群友反彈</strong>
+<ul>
+<li><strong>爭點</strong>：可魯在直播與頻道中批評朋友 <code>ekko0228</code>、<code>aoi.cc</code>「假中立、不挺朋友」，並在頻道內連續數十次貼出同一道「是非題（1 或 2）」強迫欸扣回答；以及因遊戲理解不同（如三選一火泰尼 vs 木老頭、GVG 角色評價）踢走教學大佬 <code>IndeedHelp101</code> 與異議群友，引發「情緒勒索」、「雙標（保課金會員卡拉、踢非會員）」、「一言堂」的強烈質疑。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="%E8%B2%B3%E4%B8%BB%E8%A6%81%E4%BA%BA%E7%89%A9%E9%99%A3%E7%87%9F%E8%88%87%E7%88%AD%E8%AB%96%E9%80%9F%E8%A6%BD%E8%A1%A8">貳、主要人物陣營與爭論速覽表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">陣營分類</th>
+<th style="text-align:left">Discord ID</th>
+<th style="text-align:left">群內顯示名稱 / 綽號</th>
+<th style="text-align:center">發言數</th>
+<th style="text-align:left">同陣線 / 友好對象</th>
+<th style="text-align:left">對立面 / 交火對象</th>
+<th style="text-align:left">核心爭論話題摘要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>核心當事人</strong></td>
+<td style="text-align:left"><code>keru520</code></td>
+<td style="text-align:left"><strong>可魯 / 可魯貝洛斯</strong></td>
+<td style="text-align:center">131</td>
+<td style="text-align:left"><code>9__ix</code>、<code>laoliandexinren</code>、<code>zm_88</code>、<code>hunteradc</code>、<code>jamielin0105</code> 等（原與 <code>ekko0228</code>、<code>aoi.cc</code> 為友）</td>
+<td style="text-align:left">阿智（主目標）、<code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code>、<code>raccoon1109</code>、<code>nihaoa9176</code></td>
+<td style="text-align:left">控訴智群以「影王」霸凌自己；堅持 <code>froliz</code> 就算無心或複讀，在公開群開下流玩笑造成傷害就必須負責；逼問 <code>ekko0228</code> 是非題二選一、踢除異議者。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心當事人</strong></td>
+<td style="text-align:left"><em>(未在群內發言)</em></td>
+<td style="text-align:left"><strong>睿智的阿智 / 阿智</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:left">智群核心成員</td>
+<td style="text-align:left"><code>keru520</code> 及所有挺可魯群友</td>
+<td style="text-align:left">E7 官方合作主播，智群擁有者。被控帶頭以「影／影王」暗諷可魯長達一年，事發後全程裝死神隱看戲。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心當事人</strong></td>
+<td style="text-align:left"><code>froliz</code></td>
+<td style="text-align:left"><strong>阿哥拉 / A哥 / 胡扯佬</strong></td>
+<td style="text-align:center">950</td>
+<td style="text-align:left"><code>ekko0228</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code>、<code>josepheast299</code>、<code>yotsuba.plus</code> 等</td>
+<td style="text-align:left"><code>keru520</code>、<code>9__ix</code>、<code>manhuazhai</code>、<code>epasserby</code>、<code>_valcan</code>、<code>yxt6826</code>、<code>laoliandexinren</code></td>
+<td style="text-align:left">澄清自己混英文圈完全不認識可魯，罵的一直是 2021 年舊「影子」，獻祭文為複讀、「沒種」為「沒中」選字誤植；因可魯拍第二部片繼續公審他而徹底翻臉要求道歉。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心當事人</strong></td>
+<td style="text-align:left"><code>ekko0228</code></td>
+<td style="text-align:left"><strong>新手欸扣(戰神都上不去)</strong></td>
+<td style="text-align:center">960</td>
+<td style="text-align:left"><code>froliz</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code>、<code>josepheast299</code>、<code>rand0lph</code>、<code>fire8798</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>9__ix</code>、<code>yxt6826</code>（代打與提告死敵）、<code>laoliandexinren</code>、<code>hunteradc</code>、<code>bbccdd_123</code></td>
+<td style="text-align:left">證明 <code>froliz</code> 確實在講舊影子且被誤會；與 <code>yxt6826</code> 互槓代打與報警提告；痛批可魯固執、雙標、情勒朋友選邊站、拒絕跳入可魯的「是非題」陷阱。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心當事人</strong></td>
+<td style="text-align:left"><code>aoi.cc</code></td>
+<td style="text-align:left"><strong>Aoi / 市長 / Marguerite</strong></td>
+<td style="text-align:center">160</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>zephyrestia</code>、<code>raccoon1109</code>、<code>yotsuba.plus</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>9__ix</code>、<code>yxt6826</code>、<code>laoliandexinren</code></td>
+<td style="text-align:left">認識雙方的退坑老玩家。證明 <code>froliz</code> 是純血舊影黑、完全不知情；私訊勸可魯反被兇及拍片波及，公開痛批可魯情緒勒索、二分法，最後心寒退群。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>9__ix</code></td>
+<td style="text-align:left"><strong>! 鯊寳（BabyShark）</strong></td>
+<td style="text-align:center">87</td>
+<td style="text-align:left"><code>keru520</code>、<code>laoliandexinren</code>、<code>manhuazhai</code></td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>0b_lin_k0</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>ting.</code>、<code>dtech666</code></td>
+<td style="text-align:left">頭號戰將。約 <code>froliz</code> 舊金山線下單挑、主張誤傷也必須道歉、威脅向美國移民局 (ICE) 檢舉 <code>froliz</code>、發起向韓國官方檢舉阿智活動、將反對者全貼上「智孝子」標籤。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>laoliandexinren</code></td>
+<td style="text-align:left"><strong>老練的新人</strong></td>
+<td style="text-align:center">315</td>
+<td style="text-align:left"><code>keru520</code>、<code>9__ix</code>、<code>zm_88</code></td>
+<td style="text-align:left"><code>ekko0228</code>、<code>froliz</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>nihaoa9176</code>、<code>officialpikachu</code>、<code>allen0103</code></td>
+<td style="text-align:left">自稱挺可魯的「串子／攪屎棍」。咬定 <code>froliz</code> 在智群不可能不知情，狂噴 <code>ekko0228</code> 與 <code>aoi.cc</code> 裝中立，叫不挺可魯的人滾出群組。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>yxt6826</code></td>
+<td style="text-align:left"><strong>衛央</strong></td>
+<td style="text-align:center">105</td>
+<td style="text-align:left"><code>keru520</code>（但最後被可魯踢出）</td>
+<td style="text-align:left"><code>ekko0228</code>（最大死敵）、<code>froliz</code>、<code>aoi.cc</code>、<code>raccoon1109</code>、<code>zephyrestia</code>、<code>fire8798</code></td>
+<td style="text-align:left">用 AI 查法條主張公開臭人違法、<code>froliz</code> 需負業力；另開戰場狂噴 <code>ekko0228</code>「代打狗去死」並檢舉代打，最後因不聽可魯勸阻繼續戰欸扣而被可魯踢出群。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>zm_88</code></td>
+<td style="text-align:left"><strong>zm_88</strong></td>
+<td style="text-align:center">112</td>
+<td style="text-align:left"><code>keru520</code>、<code>laoliandexinren</code></td>
+<td style="text-align:left"><code>froliz</code>、智群嘲諷者、<code>officialpikachu</code></td>
+<td style="text-align:left">貼出智群「影群=可魯群」鐵證截圖，引述刑法 309/310/304 條警告智群成員構成公然侮辱與強制罪；半夜改貼自繪寶可夢圖緩和氣氛。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>manhuazhai</code></td>
+<td style="text-align:left"><strong>漫畫宅</strong></td>
+<td style="text-align:center">50</td>
+<td style="text-align:left"><code>keru520</code>、<code>9__ix</code></td>
+<td style="text-align:left"><code>froliz</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code></td>
+<td style="text-align:left">質疑 <code>froliz</code> 講英文是在迴避邏輯，主張「讓當事人不舒服就該道歉」，並響應 <code>9__ix</code> 檢舉阿智。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>jamielin0105</code></td>
+<td style="text-align:left"><strong>jamielin0105</strong></td>
+<td style="text-align:center">46</td>
+<td style="text-align:left"><code>keru520</code>、<code>bbccdd_123</code></td>
+<td style="text-align:left"><code>ekko0228</code>、<code>froliz</code>、阿智</td>
+<td style="text-align:left">轉貼巴哈文章號召按讚聲援可魯；主張在「影=可魯」的智群跟風複讀就是有罪，誤傷也是傷。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>bbccdd_123</code></td>
+<td style="text-align:left"><strong>bbccdd_123</strong></td>
+<td style="text-align:center">45</td>
+<td style="text-align:left"><code>keru520</code>、<code>jamielin0105</code></td>
+<td style="text-align:left"><code>ekko0228</code>、<code>froliz</code>、<code>zephyrestia</code></td>
+<td style="text-align:left">批評 <code>ekko0228</code> 從頭到尾都站在 <code>froliz</code> 立場而未替可魯著想，諷刺對方是「過失霸凌」不想負責。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>kakaroto55471</code></td>
+<td style="text-align:left"><strong>kakaroto55471</strong></td>
+<td style="text-align:center">45</td>
+<td style="text-align:left"><code>keru520</code>、<code>hunteradc</code></td>
+<td style="text-align:left">阿智、<code>froliz</code></td>
+<td style="text-align:left">貼出 E7 官方 FB 粉專連結，號召群友集體私訊官方檢舉阿智長期霸凌其他實況主。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>hunteradc</code></td>
+<td style="text-align:left"><strong>hunteradc</strong></td>
+<td style="text-align:center">44</td>
+<td style="text-align:left"><code>keru520</code>、<code>kakaroto55471</code></td>
+<td style="text-align:left">阿智、<code>froliz</code>、<code>ekko0228</code></td>
+<td style="text-align:left">狂標 <code>@睿智的阿智</code> 出來面對，並以「車禍誤撞也算肇事」比喻 <code>froliz</code> 不知情不等於無罪。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>akun0927</code></td>
+<td style="text-align:left"><strong>akun0927</strong></td>
+<td style="text-align:center">40</td>
+<td style="text-align:left"><code>keru520</code></td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、智群內鬼</td>
+<td style="text-align:left">痛罵智群跑來裝中立的人是「雙面刀鬼」，感嘆可魯錯在低估了其他人的道德底線。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺可魯派</strong></td>
+<td style="text-align:left"><code>_valcan</code></td>
+<td style="text-align:left"><strong>Valcan</strong></td>
+<td style="text-align:center">27</td>
+<td style="text-align:left"><code>keru520</code></td>
+<td style="text-align:left"><code>froliz</code>、阿智</td>
+<td style="text-align:left">痛斥智群「接力霸凌」，與 <code>froliz</code> 激烈對罵，罵 <code>froliz</code> 沒社會化、出事只會裝傻。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>nihaoa9176</code></td>
+<td style="text-align:left"><strong>看不到我</strong></td>
+<td style="text-align:center">220</td>
+<td style="text-align:left"><code>ekko0228</code>、<code>zephyrestia</code>、<code>froliz</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>laoliandexinren</code>、<code>9__ix</code>、<code>yxt6826</code></td>
+<td style="text-align:left">強調「吵架與上法院都要講證據，不能用『我以為』定罪」；長文私訊苦勸可魯別再用踢人威脅群友，見可魯聽不進去後主動喊 <code>@可魯踢我吧</code> 離場。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>zephyrestia</code></td>
+<td style="text-align:left"><strong>zephyrestia</strong></td>
+<td style="text-align:center">117</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code></td>
+<td style="text-align:left"><code>9__ix</code>、<code>laoliandexinren</code>、<code>yxt6826</code>、<code>manhuazhai</code>、<code>naixi_sleepy</code></td>
+<td style="text-align:left">理性派辯手。強調法律與邏輯上的「誰主張誰舉證」與「主觀犯意」，指出 <code>froliz</code> 罵的是舊影子，只有舊影子能要求他道歉，可魯屬於誤會且開錯支線。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>raccoon1109</code></td>
+<td style="text-align:left"><strong>浣熊 / 熊哥哥 / 玥窩</strong></td>
+<td style="text-align:center">105</td>
+<td style="text-align:left"><code>aoi.cc</code>、<code>froliz</code>、<code>ekko0228</code>、<code>chia1427</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>yxt6826</code></td>
+<td style="text-align:left">一開場質問可魯為何無故封鎖他；認為在自己群內臭人/陰陽怪氣不違法，後期痛批可魯對訂閱會員與一般群友嚴重雙標，建議可魯把公開群改為私人會員制。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>yotsuba.plus</code></td>
+<td style="text-align:left"><strong>yotsuba.plus</strong></td>
+<td style="text-align:center">73</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code>、<code>zephyrestia</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>laoliandexinren</code>、<code>yxt6826</code></td>
+<td style="text-align:left">指出可魯不敢打阿智卻抓著無辜複讀機 <code>froliz</code> 打，並批評可魯利用實況主流量拍片公審與踢人（如踢走 <code>IndeedHelp101</code>）造成不對等霸凌。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>josepheast299</code></td>
+<td style="text-align:left"><strong>胖虎</strong></td>
+<td style="text-align:center">59</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>yxt6826</code>、<code>laoliandexinren</code></td>
+<td style="text-align:left">起初好意建議可魯休息時先下架第一部影片以免招黑，卻被可魯動怒反駁；後期站邊 <code>froliz</code> 與 <code>ekko0228</code>，嘲諷護航仔鬼打牆。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>valkroy_xxmn</code></td>
+<td style="text-align:left"><strong>valkroy_xxmn</strong></td>
+<td style="text-align:center">29</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code></td>
+<td style="text-align:left"><code>keru520</code>、<code>pray06917</code></td>
+<td style="text-align:left">原本關心可魯身體，但見識到可魯下午逼問 <code>ekko0228</code> 是非題後徹底改觀，直言可魯一直喊「我好累、幫幫我」只是逃避問題與情勒。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>挺A哥/質疑可魯</strong></td>
+<td style="text-align:left"><code>doomsdayfate</code></td>
+<td style="text-align:left"><strong>doomsdayfate</strong></td>
+<td style="text-align:center">23</td>
+<td style="text-align:left"><code>froliz</code>、<code>IndeedHelp101</code></td>
+<td style="text-align:left"><code>keru520</code></td>
+<td style="text-align:left">質疑可魯嚴重雙標：為何 <code>IndeedHelp101</code> 只是討論三選一攻略就被踢，且第一部片只抓複製貼上的 <code>froliz</code> 卻不抓原發文者。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>asano_jiii</code></td>
+<td style="text-align:left"><strong>asano_jiii</strong></td>
+<td style="text-align:center">494</td>
+<td style="text-align:left">試圖調解 <code>keru520</code> 與 <code>ekko0228</code>；後期與 <code>dorgon4834</code>、<code>er_ha.</code> 閒聊</td>
+<td style="text-align:left">一度與 <code>ekko0228</code>、<code>zephyrestia</code> 辯論複讀責任；喝止 <code>laoliandexinren</code> 與 <code>yxt6826</code></td>
+<td style="text-align:left">11/08 最活躍調解者。認為無心複讀仍有爭議責任，但強烈反對可魯在情緒不穩下拍片與逼問 <code>ekko0228</code>，不斷勸可魯關通知休息、設定慢速模式，最後放棄調解改當樂子人。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>0b_lin_k0</code></td>
+<td style="text-align:left"><strong>Lin</strong></td>
+<td style="text-align:center">109</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>dorgon4834</code>、<code>tujizhengyi_47124</code></td>
+<td style="text-align:left"><code>9__ix</code>（鯊寳）、<code>epasserby</code>、<code>manhuazhai</code></td>
+<td style="text-align:left">秩序維護者。在可魯睡覺期間不斷用大字體喝止外人（尤其 <code>9__ix</code> 與 <code>epasserby</code>）插嘴喧賓奪主，認為可魯與 <code>froliz</code> 都是受害者，痛罵 <code>9__ix</code> 搞一言堂。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>allen0103</code></td>
+<td style="text-align:left"><strong>allen0103</strong></td>
+<td style="text-align:center">71</td>
+<td style="text-align:left">中立偏理解 <code>froliz</code> / <code>ekko0228</code></td>
+<td style="text-align:left"><code>laoliandexinren</code>、<code>yxt6826</code></td>
+<td style="text-align:left">自稱只待可魯群的粉絲，但認為 <code>froliz</code> 確實是講舊影子（拿馬英九卸任仍被罵比喻），直言可魯的二選一像「記者誘導性提問」，並喝止 <code>laoliandexinren</code> 純噴招黑。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>_aixin</code></td>
+<td style="text-align:left"><strong>_aixin</strong></td>
+<td style="text-align:center">65</td>
+<td style="text-align:left">各方皆友善，試圖幫忙翻譯與整理懶人包</td>
+<td style="text-align:left">無明顯敵對</td>
+<td style="text-align:left">當初提議開設此溝通頻道的人。努力為雙方寫懶人包、解釋時差與英文語境誤會，後期感嘆可魯「S3（大招）開錯人」並勸可魯找管理員協助、斷網休息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>hawx116</code></td>
+<td style="text-align:left"><strong>hawx116</strong></td>
+<td style="text-align:center">62</td>
+<td style="text-align:left">法律邏輯探討者</td>
+<td style="text-align:left">無特定敵對</td>
+<td style="text-align:left">從實務判例分析網路妨害名譽極難成立；在可魯與 <code>ekko0228</code> 爭論時指出應區分「客觀事實」與「主觀犯意」，並認為舊影子說詞在刑庭上類似「幽靈抗辯／臨訟托詞」。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>epasserby</code></td>
+<td style="text-align:left"><strong>ePasserby🫪</strong></td>
+<td style="text-align:center">58</td>
+<td style="text-align:left">試圖調解 <code>keru520</code> 與 <code>froliz</code></td>
+<td style="text-align:left">與 <code>froliz</code>、<code>monodrama1_</code> 激辯；被 <code>0b_lin_k0</code> 喝止</td>
+<td style="text-align:left">親自潛入智群查證的「中立調查員」。雖貼出鐵證幫 <code>froliz</code> 證明他真的不知道可魯，但同時堅持與 <code>froliz</code> 辯論「公開群組複讀並非毫無道德責任（謠言止於智者）」。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>tujizhengyi_47124</code></td>
+<td style="text-align:left"><strong>突擊正義RAISER</strong></td>
+<td style="text-align:center">52</td>
+<td style="text-align:left"><code>0b_lin_k0</code>、<code>asano_jiii</code></td>
+<td style="text-align:left"><code>9__ix</code>、所有插嘴吵架的人</td>
+<td style="text-align:left">港籍群友，不斷重申此頻道是讓可魯與 <code>froliz</code> 解開誤會的專區，叫旁人「收聲（閉嘴）」，後期狂勸可魯抽離情緒冷靜。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>rezistemacooper</code></td>
+<td style="text-align:left"><strong>rezistemacooper</strong></td>
+<td style="text-align:center">49</td>
+<td style="text-align:left">前期挺 <code>keru520</code>，後期認同 <code>ekko0228</code> 與 <code>asano_jiii</code></td>
+<td style="text-align:left">前期槓 <code>froliz</code> / <code>ekko0228</code>，後期批評 <code>keru520</code> 固執</td>
+<td style="text-align:left">因看過可魯攻略來聲援，起初主張「在公共場合玩梗臭人燒到人就該道歉」；但看到可魯逼問 <code>ekko0228</code> 與直播表現後，坦言可魯「不會溝通、只是拉人站隊倒情緒垃圾」。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>naixi_sleepy</code></td>
+<td style="text-align:left"><strong>奶昔爹絲NaiXi</strong></td>
+<td style="text-align:center">48</td>
+<td style="text-align:left">原挺 <code>keru520</code>，後向 <code>froliz</code> 道歉</td>
+<td style="text-align:left">智群霸凌者；對 <code>keru520</code> 後期表現心碎</td>
+<td style="text-align:left">起初用英文與 <code>froliz</code> 激辯智群非內部玩笑，理解 <code>froliz</code> 真不知情後主動向他誠懇道歉，轉而貼截圖控訴智群；最後見可魯失去理智踢人，悲傷宣布退出所有 E7 社群。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>ting.</code></td>
+<td style="text-align:left"><strong>ting.</strong></td>
+<td style="text-align:center">36</td>
+<td style="text-align:left"><code>0b_lin_k0</code></td>
+<td style="text-align:left"><code>9__ix</code>（鯊寳）</td>
+<td style="text-align:left">勸 <code>9__ix</code> 尊重可魯開頻初衷不要在頻道內引戰，結果被 <code>9__ix</code> 打成「智孝子」並封鎖。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中立/調解/秩序</strong></td>
+<td style="text-align:left"><code>windjing</code></td>
+<td style="text-align:left"><strong>windjing</strong></td>
+<td style="text-align:center">35</td>
+<td style="text-align:left">中立法律實務分享</td>
+<td style="text-align:left">無</td>
+<td style="text-align:left">在法院工作，貼出多篇真實判決書解釋公然侮辱構成要件；直言可魯與 <code>froliz</code> 頻率完全不對盤，要道歉只能靠提告解決。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>officialpikachu</code></td>
+<td style="text-align:left"><strong>official Pikachu</strong></td>
+<td style="text-align:center">255</td>
+<td style="text-align:left"><code>ekko0228</code>、<code>fire8798</code>、<code>pero5454</code>、<code>zm_88</code></td>
+<td style="text-align:left">反串嘲諷 <code>keru520</code>、<code>hunteradc</code>、<code>yxt6826</code></td>
+<td style="text-align:left">智群來的知名反串樂子人（「0號觀眾」）。假裝萌新狂酸可魯攻略（如聽信可魯不抽「保健室」導致一年不能打 RTA、問可魯群有無傳說框），半夜聊番號與寶可夢。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>dorgon4834</code></td>
+<td style="text-align:left"><strong>給我個面子</strong></td>
+<td style="text-align:center">238</td>
+<td style="text-align:left"><code>0b_lin_k0</code>、<code>asano_jiii</code>、<code>er_ha.</code>、<code>into_the_spray.</code></td>
+<td style="text-align:left">無（和平吃瓜與歪樓）</td>
+<td style="text-align:left">Steam 服新手，用動漫梗（「鬥神開領域」）形容混戰，心疼可魯一人管群沒管理員幫忙；後期與 <code>er_ha.</code> 大聊黃油 (<code>Black Souls</code>) 成功讓頻道降溫。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>fire8798</code></td>
+<td style="text-align:left"><strong>阿狐</strong></td>
+<td style="text-align:center">104</td>
+<td style="text-align:left"><code>ekko0228</code>、<code>froliz</code>、<code>officialpikachu</code>、<code>rand0lph</code></td>
+<td style="text-align:left"><code>yxt6826</code>（衛央）、<code>laoliandexinren</code></td>
+<td style="text-align:left">智群親友／吃瓜群眾。嘲笑 <code>yxt6826</code> 與護航派邏輯死亡、半夜與眾人刷複製文（北投早餐、統神、五條悟）及聊開車番號。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>er_ha.</code></td>
+<td style="text-align:left"><strong>er_ha.</strong></td>
+<td style="text-align:center">79</td>
+<td style="text-align:left"><code>dorgon4834</code>、<code>asano_jiii</code></td>
+<td style="text-align:left">無</td>
+<td style="text-align:left">爬完全程的吃瓜群友，在 11/08 傍晚休戰期間主動發起黃油 (<code>Black Souls</code> 格林／小紅帽／壽司) 話題歪樓，成功轉移頻道肅殺氣氛。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>into_the_spray.</code></td>
+<td style="text-align:left"><strong>賽靈糧母豬滾喇幹</strong></td>
+<td style="text-align:center">75</td>
+<td style="text-align:left"><code>asano_jiii</code>、<code>dorgon4834</code>、<code>ekko0228</code></td>
+<td style="text-align:left">嘲諷 <code>9__ix</code> 與盲目互毆的變異路人</td>
+<td style="text-align:left">11/08 傍晚進場的犀利樂子人。神比喻整件事像「進須彌沒解主線（阿智），卻抓路人解森林書支線 N 百小時，路人全變異成事主互毆」，並主持「阿智狼人殺」搞笑。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>pero5454</code></td>
+<td style="text-align:left"><strong>pero5454</strong></td>
+<td style="text-align:center">60</td>
+<td style="text-align:left"><code>officialpikachu</code>、<code>fire8798</code>、<code>ekko0228</code></td>
+<td style="text-align:left"><code>yxt6826</code></td>
+<td style="text-align:left">深夜場吃瓜群眾，吐槽 <code>yxt6826</code> 抓代打與法條跳針，並與 <code>officialpikachu</code> 大聊日本女優番號與股票。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>吃瓜/反串/歪樓</strong></td>
+<td style="text-align:left"><code>rand0lph</code></td>
+<td style="text-align:left"><strong>rand0lph</strong></td>
+<td style="text-align:center">56</td>
+<td style="text-align:left"><code>froliz</code>、<code>ekko0228</code>、<code>fire8798</code></td>
+<td style="text-align:left"><code>yxt6826</code>、<code>laoliandexinren</code></td>
+<td style="text-align:left">幫 <code>froliz</code> 與 <code>ekko0228</code> 助陣，吐槽 <code>yxt6826</code> 用 AI 打官司與跳針。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%E5%8F%83%E5%90%84%E9%99%A3%E7%87%9F%E4%BA%BA%E7%89%A9%E8%A9%B3%E7%B4%B0%E6%B8%85%E5%96%AE%E5%90%AB%E5%B0%8D%E7%AB%8B%E9%9D%A2%E5%90%8C%E9%99%A3%E7%B7%9A%E8%88%87%E4%B8%BB%E8%A6%81%E7%88%AD%E8%AB%96%E8%A9%B1%E9%A1%8C">參、各陣營人物詳細清單（含對立面、同陣線與主要爭論話題）</h2>
+<p>以下依陣營與角色定位，詳細列出頻道內所有重要參與者（共 65 位核心與活躍人物）的完整分析：</p>
+<hr>
+<h3 id="%E4%B8%80%E6%A0%B8%E5%BF%83%E7%95%B6%E4%BA%8B%E4%BA%BA%E8%88%87%E9%A2%A8%E6%B3%A2%E4%B8%AD%E5%BF%835-%E4%BA%BA">一、核心當事人與風波中心（5 人）</h3>
+<h4 id="1-keru520%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E5%8F%AF%E9%AD%AF--%E5%8F%AF%E9%AD%AF%E8%B2%9D%E6%B4%9B%E6%96%AF-131-%E5%89%87%E8%A8%8A%E6%81%AF">1. <code>keru520</code>（顯示名稱：<strong>可魯 / 可魯貝洛斯</strong>）— 131 則訊息</h4>
+<ul>
+<li><strong>身分定位</strong>：本 Discord 伺服器群主、Epic 7 攻略與實況 YouTuber。</li>
+<li><strong>同陣線／支持者</strong>：
+<ul>
+<li>死忠護航與聲援群友：<code>9__ix</code>（鯊寳）、<code>laoliandexinren</code>（老練的新人）、<code>zm_88</code>、<code>hunteradc</code>、<code>kakaroto55471</code>、<code>jamielin0105</code>、<code>bbccdd_123</code>、<code>akun0927</code>、<code>_valcan</code>、<code>pray06917</code>、<code>a27389504</code>、<code>lastcry0918</code>、<code>lixia9802</code>、<code>eo1561</code>。</li>
+<li><em>註</em>：<code>yxt6826</code>（衛央）原本全力挺他，但在 11/08 15:57 因不聽勸阻持續攻擊 <code>ekko0228</code>，被可魯親手踢出群組；<code>ekko0228</code> 與 <code>aoi.cc</code> 原本是他看重的朋友，但在此事件中決裂。</li>
+</ul>
+</li>
+<li><strong>對立面</strong>：
+<ul>
+<li><strong>睿智的阿智</strong>（場外最大目標，智群群主）及智群長期嘲諷他的成員。</li>
+<li><strong><code>froliz</code>（阿哥拉／胡扯佬）</strong>：第一至第三部影片點名對質的核心對象。</li>
+<li><strong><code>ekko0228</code>（新手欸扣）</strong>、<strong><code>aoi.cc</code>（Aoi）</strong>：因兩人替 <code>froliz</code> 澄清誤會且不認同可魯拍片公審的做法，被可魯認為「朋友不挺我、假中立」而激烈對峙。</li>
+<li><strong><code>raccoon1109</code>（浣熊）</strong>、<strong><code>nihaoa9176</code>（看不到我）</strong>、<strong><code>doomsdayfate</code></strong>、<strong><code>IndeedHelp101</code></strong> 等質疑他一言堂或雙標的玩家。</li>
+</ul>
+</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>控訴阿智與智群長期網路霸凌</strong>：列出 10 點證據（如舊影子早已退坑、自己最愛角色是暗和英、智群截圖明確出現「可魯群＝影群」等），控訴阿智身為官方合作主播卻放任甚至帶頭在公開群用「影王」、「獻祭子孫袋／小腦」羞辱他。</li>
+<li><strong>堅持 <code>froliz</code>（阿哥拉）必須為「公開群組下流玩笑與複讀」負責</strong>：即便 <code>froliz</code> 解釋自己罵的是舊影子、只是複讀機、且「沒種」是「沒中」的錯字，可魯仍在第二、三部直播影片中表示「誤會又怎樣？社會運作邏輯不是說自己無心、複製貼上就能免責，造成我的名譽傷害就該負責」。</li>
+<li><strong>對 <code>ekko0228</code> 進行「是非題二選一」靈魂拷問</strong>：在 11/08 下午不斷重貼同一段話：「<em>一個全公開討論區，一個搞不清楚狀況進去講下流玩笑傷害到我的名譽，最後說他說的不是我，你覺得社會邏輯是只要證明自己亂說、複製貼上就不用負責？是或不是二選一</em>」，試圖逼 <code>ekko0228</code> 先認同這個前提，甚至為此踢走幫自己罵欸扣的 <code>yxt6826</code>。</li>
+<li><strong>捍衛自己拍片與踢人／封鎖的管理權</strong>：強調自己身心俱疲無法打十幾萬字，只能用「一刀不剪直播錄影」直球對決；並解釋封鎖 <code>raccoon1109</code> 或踢人只是個人的「資訊過濾手段」，要求來他群的人就必須配合他。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="2-%E7%9D%BF%E6%99%BA%E7%9A%84%E9%98%BF%E6%99%BA--%E9%98%BF%E6%99%BA%E6%9C%AA%E5%9C%A8%E7%BE%A4%E5%85%A7%E7%99%BC%E8%A8%80%E8%A2%AB-%E7%9D%BF%E6%99%BA%E7%9A%84%E9%98%BF%E6%99%BA-%E6%A8%99%E8%A8%BB%E9%80%BE-25-%E6%AC%A1">2. <strong>睿智的阿智 / 阿智</strong>（未在群內發言，被 <code>@睿智的阿智</code> 標註逾 25 次）</h4>
+<ul>
+<li><strong>身分定位</strong>：另一位 E7 實況主、E7WC 官方繁中直播台合作主持人，擁有數千人的公開 Discord 群（「智群」）。</li>
+<li><strong>同陣線</strong>：智群內部嘲諷小圈子。</li>
+<li><strong>對立面</strong>：<code>keru520</code>（可魯）與所有挺可魯成員（<code>9__ix</code>、<code>hunteradc</code>、<code>kakaroto55471</code>、<code>laoliandexinren</code> 等），連挺 <code>froliz</code> 的 <code>aoi.cc</code> 與中立群友也認為阿智本人才是真正該出來面對的罪魁禍首。</li>
+<li><strong>主要涉及的話題</strong>：
+<ul>
+<li>被控在智群帶頭或默許群友將舊實況主「影子」的黑稱轉嫁到可魯頭上（稱呼「影王」、「影群」），嘲笑可魯的遊戲理解與練度。</li>
+<li>在可魯開群對質的兩天內<strong>完全神隱裝死</strong>（據 <code>doke7591</code> 與 <code>yotsuba.plus</code> 透露，阿智本人帳號其實潛水在可魯群內看戲，甚至在外面求懶人包），成功讓可魯與路人 <code>froliz</code> 及自己的朋友們內耗自爆。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-froliz%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E9%98%BF%E5%93%A5%E6%8B%89--a%E5%93%A5--%E8%83%A1%E6%89%AF%E4%BD%AC-950-%E5%89%87%E8%A8%8A%E6%81%AF">3. <code>froliz</code>（顯示名稱：<strong>阿哥拉 / A哥 / 胡扯佬</strong>）— 950 則訊息</h4>
+<ul>
+<li><strong>身分定位</strong>：居住於美國的 E7 英文圈老玩家（前 7 團中英雙語公會聯盟會長），在智群以「純血影黑大將軍（專黑 2021 年舊影子）」及「萬年複讀機（複製貼上別人發言）」聞名。</li>
+<li><strong>同陣線／聲援者</strong>：<code>ekko0228</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code>、<code>yotsuba.plus</code>、<code>josepheast299</code>、<code>rand0lph</code>、<code>fire8798</code>、<code>epasserby</code>（替他證明確實不知情）、<code>monodrama1_</code>、<code>reimuuuu</code>、<code>valkroy_xxmn</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>9__ix</code>（鯊寳）、<code>manhuazhai</code>、<code>laoliandexinren</code>、<code>yxt6826</code>、<code>_valcan</code>、<code>hunteradc</code>、<code>bbccdd_123</code>、<code>epasserby</code>（針對複讀道德責任激辯）。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>澄清「舊影子 vs. 可魯」的天大誤會</strong>：強調自己只看歐美英文圈 E7 實況，在可魯發第一部影片前<strong>完全不知道可魯是誰</strong>；他在智群罵了四年的「影」自始至終都是指 2021 年因宣傳 Bug 退坑的加拿大台裔實況主「影子 (Shadow)」。</li>
+<li><strong>解釋「獻祭文」與「沒種」的來龍去脈</strong>：說明「獻祭子孫袋」是智群抽卡時的複製文內部玩笑（Inside Joke），他只是習慣性複製貼上（複讀）；而「笑死還得獻祭，沒種」是因為他用漢語拼音輸入法，把抽卡**「沒中 (mei zhong)」選字打成「沒種」**。</li>
+<li><strong>從「好意澄清」轉為「全面開戰要求可魯道歉」</strong>：11/07 早上他主動來可魯群解釋，原本表示只要解開誤會、不要求可魯道歉；但當晚可魯發燒醒來後發布<strong>第二部影片</strong>繼續抓著他公審，且狂熱粉絲（如 <code>9__ix</code>）威脅肉搜並向美國移民局檢舉他，讓 <code>froliz</code> 徹底暴怒，前往巴哈場外發文，痛批可魯與其粉絲「自我中心、邏輯死亡、雙標」，要求可魯下架影片並公開拍片向他道歉。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="4-ekko0228%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E6%96%B0%E6%89%8B%E6%AC%B8%E6%89%A3%E6%88%B0%E7%A5%9E%E9%83%BD%E4%B8%8A%E4%B8%8D%E5%8E%BB-960-%E5%89%87%E8%A8%8A%E6%81%AF%E5%85%A8%E9%A0%BB%E9%81%93%E7%99%BC%E8%A8%80%E9%87%8F%E7%AC%AC-1-%E5%90%8D">4. <code>ekko0228</code>（顯示名稱：<strong>新手欸扣(戰神都上不去)</strong>）— 960 則訊息（全頻道發言量第 1 名）</h4>
+<ul>
+<li><strong>身分定位</strong>：E7 高端 RTA 玩家／實況主，同時認識可魯（曾一起聊 RTA）與智群成員。</li>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code>、<code>josepheast299</code>、<code>rand0lph</code>、<code>fire8798</code>、<code>officialpikachu</code>、<code>raccoon1109</code>、<code>mioywl</code>；後期獲得 <code>asano_jiii</code>、<code>rezistemacooper</code>、<code>into_the_spray.</code> 同情。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>（衛央，互控代打與報警提告）、<code>9__ix</code>（鯊寳）、<code>laoliandexinren</code>、<code>keru520</code>（11/08 下午正面決裂）、<code>hunteradc</code>、<code>bbccdd_123</code>、<code>jamielin0105</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>為 <code>froliz</code> 作證洗刷冤屈</strong>：以四年老玩家身分作證 <code>froliz</code> 在智群真的只是無腦複讀機、只熟英文圈、痛恨的是舊影子，且「沒種」確實是「沒中」的選字錯誤；批評可魯在第三部影片第 35 分鐘親口承認「我誤會他了又怎麼樣」，卻仍放任粉絲看第二部片網暴無辜的人。</li>
+<li><strong>與 <code>yxt6826</code>（衛央）的「代打 vs. 提告三聯單」支線大戰</strong>：因替 <code>froliz</code> 說話，遭 <code>yxt6826</code> 貼圖指控為「代打主播／代打狗」並辱罵「代打去死一死啦」；<code>ekko0228</code> 憤而截圖存證，表示罵人去死絕對構成公然侮辱／恐嚇，揚言去警局報案讓 <code>yxt6826</code> 收三聯單。</li>
+<li><strong>痛批可魯「假溝通、真情勒、雙標與固執」</strong>：因被可魯在影片中點名「對欸扣很失望、是朋友就不該假中立」，於 11/08 14:54 發表千字長文（第 5649 行），痛陳可魯為何在圈內被人討厭——<strong>固執、雙標（如卡拉事件保課金會員、踢非會員）、聽不進高手建議（曾對傳說彩框 N 佬嗆「你 PVP 沒我懂」）、把「強迫別人認同自己」當成溝通</strong>。</li>
+<li><strong>拒絕可魯的「是非題二選一」文字獄</strong>：面對可魯連續十幾次逼問是非題，堅持「認知對象不同（罵 A 卻被 B 對號入座），答案就不同」，並在看完可魯 11/08 晚間直播後徹底心死，宣布放棄溝通（第 7969–8025 行）。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="5-aoicc%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1aoi--%E5%B8%82%E9%95%B7--marguerite-160-%E5%89%87%E8%A8%8A%E6%81%AF">5. <code>aoi.cc</code>（顯示名稱：<strong>Aoi / 市長 / Marguerite</strong>）— 160 則訊息</h4>
+<ul>
+<li><strong>身分定位</strong>：退坑 3～4 年的 E7 遠古傳說／E7WC 框老玩家，同時是 <code>froliz</code> 的老友，也曾與 <code>keru520</code> 私交不錯。</li>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>zephyrestia</code>、<code>raccoon1109</code>（熊哥哥）、<code>yotsuba.plus</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>（第二部片後決裂）、<code>9__ix</code>、<code>yxt6826</code>、<code>laoliandexinren</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>擔保 <code>froliz</code> 清白並譴責智群真正惡意者</strong>：一進場就以人格擔保 <code>froliz</code> 是純血舊影黑，完全不知道智群已把「影」偷換概念成可魯；同時表明自己也看不起智群背地嘲笑可魯的行為（甚至支持去檢舉拔掉阿智的官方主播資格），但勸可魯「冤有頭債有主，不該打錯人」。</li>
+<li><strong>揭露私訊調解卻遭可魯遷怒的過程</strong>：11/07 下午他私訊可魯好意解釋 <code>froliz</code> 的情況，結果可魯非但不信，還對 <code>aoi.cc</code> 發脾氣並拍了第二部影片；雖然可魯在 11/08 凌晨私訊向他道歉，但下午可魯又在直播與頻道逼問朋友。</li>
+<li><strong>公開痛批可魯「情緒勒索與二分法」</strong>：在 11/08 15:18（第 6002 行）發表長文，直言可魯只想要腦波弱、無條件認同他的信徒，習慣用二分法與情緒勒索對待朋友，「真心建議你不要經營社群」，隨後失望退群（退群前還反串酸了一句「我悟了 froliz 請下跪跟可魯道歉」）。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="%E4%BA%8C%E6%8C%BA%E5%8F%AF%E9%AD%AF%E9%99%A3%E7%87%9F%E4%B8%BB%E6%88%B0%E6%B4%BE%E6%B3%95%E6%A2%9D%EF%BC%8F%E6%AA%A2%E8%88%89%E6%B4%BE%E8%AD%B7%E8%88%AA%E7%BE%A4%E5%8F%8B21-%E4%BA%BA">二、挺可魯陣營：主戰派、法條／檢舉派、護航群友（21 人）</h3>
+<h4 id="6-9ix%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1-%E9%AF%8A%E5%AF%B3babyshark-%E9%AF%8A%E5%AF%B6--%E9%AF%8A%E5%93%A5-87-%E5%89%87%E8%A8%8A%E6%81%AF">6. <code>9__ix</code>（顯示名稱：<strong>! 鯊寳（BabyShark）/ 鯊寶 / 鯊哥</strong>）— 87 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>laoliandexinren</code>、<code>manhuazhai</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>0b_lin_k0</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>ting.</code>、<code>tujizhengyi_47124</code>、<code>lonelylife.</code>、<code>dtech666</code>、<code>into_the_spray.</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>猛烈攻擊 <code>froliz</code>（約架＋張一砍張二比喻＋檢舉美國移民局）</strong>：用「你想砍張一卻誤砍張二，難道不用對張二負責？」反駁 <code>froliz</code>；多次挑釁 <code>froliz</code> 在舊金山線下見面單挑；更在 11/08 下午宣布已聯繫美國法律人士，準備向<strong>美國移民部門 (ICE)</strong> 檢舉 <code>froliz</code> 在網路上自稱「美國人」（第 5509 行）。</li>
+<li><strong>發起向韓國官方檢舉阿智運動</strong>：撰寫檢舉信模板並聯繫 E7 英文與韓文運營部，要求撤銷阿智的 E7WC 官方中文台主持人資格。</li>
+<li><strong>「智孝子」標籤與封鎖戰術</strong>：將所有幫 <code>froliz</code> 說話、或勸他閉嘴的人全數痛罵為「智孝子／智群小弟／瘋狗」，並逐一封鎖對他訊息按表情符號的群友。</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-laoliandexinren%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E8%80%81%E7%B7%B4%E7%9A%84%E6%96%B0%E4%BA%BA-315-%E5%89%87%E8%A8%8A%E6%81%AF">7. <code>laoliandexinren</code>（顯示名稱：<strong>老練的新人</strong>）— 315 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>9__ix</code>（狂吹鯊哥 1v10）、<code>zm_88</code>。</li>
+<li><strong>對立面</strong>：<code>ekko0228</code>、<code>froliz</code>、<code>aoi.cc</code>、<code>zephyrestia</code>、<code>nihaoa9176</code>、<code>officialpikachu</code>、<code>allen0103</code>、<code>asano_jiii</code>、<code>睿智的阿智</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>自認是幫可魯出氣的「串子／攪屎棍」。堅決不信 <code>froliz</code> 待在智群那麼久會不知道影王是可魯，痛罵「路過看到別人被圍毆還跟著踹一腳（複製貼上），算帳時卻裝傻說不認識」。</li>
+<li>狂標 <code>@睿智的阿智</code> 叫他出來跪下道歉；並在 11/08 下午對 <code>ekko0228</code>、<code>aoi.cc</code>、<code>zephyrestia</code> 進行無差別嘴砲（甚至人身攻擊被群友制止），叫所有不挺可魯的人滾出可魯的 DC 群。</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-yxt6826%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E8%A1%9B%E5%A4%AE-105-%E5%89%87%E8%A8%8A%E6%81%AF">8. <code>yxt6826</code>（顯示名稱：<strong>衛央</strong>）— 105 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>（但最後在 11/08 15:57 被可魯踢出群組）。</li>
+<li><strong>對立面</strong>：<code>ekko0228</code>（死敵）、<code>froliz</code>、<code>aoi.cc</code>、<code>raccoon1109</code>、<code>zephyrestia</code>、<code>josepheast299</code>、<code>fire8798</code>、<code>rand0lph</code>、<code>woshiwo555555</code>、<code>coolguyho</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>AI 法條護航與「業力論」</strong>：不斷貼出 ChatGPT 截圖，主張在公開群組臭人就是違法，<code>froliz</code> 不管罵的是舊影子還是可魯都必須承擔「臭人的業力」，並要求 <code>froliz</code> 拍片自證。</li>
+<li><strong>指控 <code>ekko0228</code> 代打並互嗆提告</strong>：11/08 凌晨貼出截圖指控 <code>ekko0228</code> 是「代打主播」，痛罵「代打去死一死啦／代打狗」，並去巴哈發文與向官方檢舉；面對 <code>ekko0228</code> 揚言報警提告，他反嗆等拿到報案單就能取得欸扣個資反告。</li>
+<li><strong>悲劇收場</strong>：11/08 下午可魯試圖安撫 <code>ekko0228</code> 時，<code>yxt6826</code> 仍持續開嘲諷，結果被可魯以「你在害我失去朋友」為由直接踢出伺服器（第 6465–6475 行）。</li>
+</ol>
+</li>
+</ul>
+<h4 id="9-zm88--112-%E5%89%87%E8%A8%8A%E6%81%AF">9. <code>zm_88</code> — 112 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>laoliandexinren</code>（與 <code>officialpikachu</code> 亦敵亦友互相調侃）。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、智群嘲諷者。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>貼出智群過往對話截圖（證明智群成員明確知道「影群＝可魯群」），並請教律師朋友後搬出《刑法》第 309 條（公然侮辱）、第 310 條（誹謗罪之「可得特定人」）、第 304 條（強制罪，警告群友勿瘋狂 tag 可魯）及《民法》侵權行為，呼籲智群的人趁早道歉；凌晨三點後突然轉型貼出自己畫的寶可夢手繪圖讓大家消氣。</li>
+</ul>
+</li>
+</ul>
+<h4 id="10-manhuazhai%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E6%BC%AB%E7%95%AB%E5%AE%85-50-%E5%89%87%E8%A8%8A%E6%81%AF">10. <code>manhuazhai</code>（顯示名稱：<strong>漫畫宅</strong>）— 50 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>9__ix</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、<code>zephyrestia</code>、<code>0b_lin_k0</code>。</li>
+<li><strong>主要想爭的話題</strong>：質疑 <code>froliz</code> 用英文回覆是在逃避中文邏輯；主張「只要你的言論讓當事人感到不舒服，不管有心無心都應該先道歉」，並積極配合 <code>9__ix</code> 蒐證檢舉阿智。</li>
+</ul>
+<h4 id="11-jamielin0105--46-%E5%89%87%E8%A8%8A%E6%81%AF">11. <code>jamielin0105</code> — 46 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>bbccdd_123</code>。</li>
+<li><strong>對立面</strong>：<code>ekko0228</code>、<code>froliz</code>、阿智。</li>
+<li><strong>主要想爭的話題</strong>：在頻道內轉貼巴哈姆特聲援可魯的文章請大家幫忙按讚；與 <code>ekko0228</code> 爭論時堅持「在阿智那個『影＝可魯』的公開群組裡跟著喊影，就算不知情也是誤傷，誤殺也是殺，不能說不知情就無罪」。</li>
+</ul>
+<h4 id="12-bbccdd123--45-%E5%89%87%E8%A8%8A%E6%81%AF">12. <code>bbccdd_123</code> — 45 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>jamielin0105</code>。</li>
+<li><strong>對立面</strong>：<code>ekko0228</code>、<code>froliz</code>、<code>zephyrestia</code>、<code>officialpikachu</code>。</li>
+<li><strong>主要想爭的話題</strong>：痛批智群「假中立、私下群一直轉貼一直臭」；指責 <code>ekko0228</code> 從頭到尾都站在 <code>froliz</code> 的認知替他開脫，從未站在朋友可魯受傷的角度思考，諷刺應以「過失霸凌」起訴。</li>
+</ul>
+<h4 id="13-kakaroto55471--45-%E5%89%87%E8%A8%8A%E6%81%AF">13. <code>kakaroto55471</code> — 45 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>hunteradc</code>。</li>
+<li><strong>對立面</strong>：阿智、<code>froliz</code>。</li>
+<li><strong>主要想爭的話題</strong>：主攻「官方認證主播失格」，多次貼出《第七史詩》官方 Facebook 粉絲專頁連結，號召所有群友一人一信私訊官方，檢舉阿智身為官方主播卻帶頭霸凌其他實況主長達一年。</li>
+</ul>
+<h4 id="14-hunteradc--44-%E5%89%87%E8%A8%8A%E6%81%AF">14. <code>hunteradc</code> — 44 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>、<code>kakaroto55471</code>。</li>
+<li><strong>對立面</strong>：阿智（稱其「80智」）、<code>froliz</code>、<code>ekko0228</code>、<code>officialpikachu</code>。</li>
+<li><strong>主要想爭的話題</strong>：不斷標註 <code>@睿智的阿智</code> 怒罵他躲在幕後當縮頭烏龜；並以「開車不小心撞死人也是過失致死」比喻 <code>froliz</code> 在公開群組跟風複讀造成傷害，不能用「不知情」免責。</li>
+</ul>
+<h4 id="15-akun0927--40-%E5%89%87%E8%A8%8A%E6%81%AF">15. <code>akun0927</code> — 40 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、<code>ekko0228</code>、智群內鬼。</li>
+<li><strong>主要想爭的話題</strong>：諷刺兩邊跑的人是「雙面刀鬼」，認為智群的人把私下嘲笑當有趣，感嘆「可魯真的錯了，因為大部分的人道德都很低」。</li>
+</ul>
+<h4 id="16-valcan%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1valcan-27-%E5%89%87%E8%A8%8A%E6%81%AF">16. <code>_valcan</code>（顯示名稱：<strong>Valcan</strong>）— 27 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、阿智。</li>
+<li><strong>主要想爭的話題</strong>：將智群的行為定調為惡劣的「接力霸凌」；與 <code>froliz</code> 正面交鋒，痛罵 <code>froliz</code> 講話沒禮貌、沒社會化、毫無同理心，被抓包後只會裝傻充愣。</li>
+</ul>
+<h4 id="17-pray06917--24-%E5%89%87%E8%A8%8A%E6%81%AF">17. <code>pray06917</code> — 24 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>valkroy_xxmn</code>。</li>
+<li><strong>主要想爭的話題</strong>：貼出去年 8 月的截圖證明智群早就開始霸凌；認為就算 <code>froliz</code> 真的不知情，可魯在看到滿坑滿谷嘲諷截圖時也根本不可能分辨誰是真惡意、誰是複讀機，因此可魯反擊完全合情合理。</li>
+</ul>
+<h4 id="18-eo1561--26-%E5%89%87%E8%A8%8A%E6%81%AF">18. <code>eo1561</code> — 26 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：無特定死敵（偏向緩和氣氛）。</li>
+<li><strong>主要想爭的話題</strong>：幫忙按讚巴哈聲援可魯貼文；在 <code>laoliandexinren</code> 罵到別人父母時出面勸阻「不講老爹老媽，文明你我他」；後期在 <code>ekko0228</code> 抱怨可魯直播時幽默刷「朋友分-2 / 朋友分-3」。</li>
+</ul>
+<h4 id="19-crazypuppy77777--19-%E5%89%87%E8%A8%8A%E6%81%AF">19. <code>crazy_puppy77777</code> — 19 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：偏向 <code>keru520</code>。</li>
+<li><strong>對立面</strong>：阿智、<code>froliz</code>。</li>
+<li><strong>主要想爭的話題</strong>：質疑「如果每個都裝傻說在講別人，那天下無敵了」；點名 <code>@睿智的阿智 不要再吃瓜了喔</code>，並在下午勸可魯與 <code>ekko0228</code> 兩人都去休息別再無限輪迴。</li>
+</ul>
+<h4 id="20-a27389504--16-%E5%89%87%E8%A8%8A%E6%81%AF">20. <code>a27389504</code> — 16 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：阿智、智群小圈子。</li>
+<li><strong>主要想爭的話題</strong>：以當年曾因「舊影子 Bug 事件」一起被鎖帳號的老玩家身分，指出舊影子都退坑幾年了，智群還拿「影」字在遊戲裡搞學閥與鄙視鏈、踩低可魯來建立優越感。</li>
+</ul>
+<h4 id="21-lixia9802--13-%E5%89%87%E8%A8%8A%E6%81%AF">21. <code>lixia9802</code> — 13 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：替可魯緩頰，表示看過實況都知道可魯其實收斂很多、願意分享經驗，累積太多壓力才會生氣，但也認同 <code>ekko0228</code> 像是會在可魯出問題時敲醒他的朋友。</li>
+</ul>
+<h4 id="22-flyshas--12-%E5%89%87%E8%A8%8A%E6%81%AF">22. <code>flyshas</code> — 12 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：偏向 <code>keru520</code>。</li>
+<li><strong>對立面</strong>：挺 <code>froliz</code> 派。</li>
+<li><strong>主要想爭的話題</strong>：看熱鬧之餘質疑挺 A 哥派：「所以你們都覺得不認識一個人就可以亂講人家閒話囉？可是影子不是很久沒玩了嗎.JPG」，並戲稱頻道戰況如「虎牢關戰呂布」。</li>
+</ul>
+<h4 id="23-lastcry0918--11-%E5%89%87%E8%A8%8A%E6%81%AF">23. <code>lastcry0918</code> — 11 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：<code>froliz</code>。</li>
+<li><strong>主要想爭的話題</strong>：反駁 <code>froliz</code> 的「內部玩笑 (Inside Joke)」說法，指出智群有 2000～3000 人屬於公開頻道，並質疑 <code>froliz</code> 為何連帶有「可魯」字眼的訊息也跟著複製貼上。</li>
+</ul>
+<h4 id="24-3456319--11-%E5%89%87%E8%A8%8A%E6%81%AF">24. <code>3456319</code> — 11 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>keru520</code>。</li>
+<li><strong>對立面</strong>：<code>officialpikachu</code>、智群。</li>
+<li><strong>主要想爭的話題</strong>：替可魯抱不平，與反串的 <code>officialpikachu</code> 交火。</li>
+</ul>
+<h4 id="25%E2%80%9326-%E5%85%B6%E4%BB%96%E8%81%B2%E6%8F%B4%E5%8F%AF%E9%AD%AF%E7%BE%A4%E5%8F%8Bmonstting-2-%E5%89%87baiby-1-%E5%89%87koko436-1-%E5%89%87">25–26. 其他聲援可魯群友：<code>monstting</code> (2 則)、<code>baiby_</code> (1 則)、<code>koko436</code> (1 則)</h4>
+<ul>
+<li><strong>主要話題</strong>：<code>monstting</code> 痛批拿「說者無心聽者有意」當擋箭牌很荒謬，誤傷別人第一時間就該道歉；<code>koko436</code> 與 <code>baiby_</code> 轉貼巴哈場外文號召群友集氣按讚支持可魯。</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%E6%8C%BA%E9%98%BF%E5%93%A5%E6%8B%89-froliz-%EF%BC%8F-%E8%B3%AA%E7%96%91%E5%8F%AF%E9%AD%AF%E8%99%95%E7%90%86%E6%96%B9%E5%BC%8F%E9%99%A3%E7%87%9F15-%E4%BA%BA">三、挺阿哥拉 (<code>froliz</code>) ／ 質疑可魯處理方式陣營（15 人）</h3>
+<h4 id="27-nihaoa9176%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E7%9C%8B%E4%B8%8D%E5%88%B0%E6%88%91-220-%E5%89%87%E8%A8%8A%E6%81%AF">27. <code>nihaoa9176</code>（顯示名稱：<strong>看不到我</strong>）— 220 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：認同 <code>ekko0228</code>、<code>zephyrestia</code>、<code>froliz</code> 的舉證原則。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>laoliandexinren</code>、<code>9__ix</code>、<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>強調「證據法則」反對「我以為定罪」</strong>：自稱前《楓之谷》吵架王／吃瓜群眾，認為可魯第一部片打阿智很合理，但第二部片在沒有任何截圖能證明「<code>froliz</code> 知道影王＝可魯」的情況下拍片公審 <code>froliz</code>，就如同「沒證據卻以為鄰居偷錢就報警抓人」，讓可魯自己也變成了網路霸凌者。</li>
+<li><strong>私訊長文苦勸可魯卻換來心寒離場</strong>：在 11/08 15:02（第 5719 行）公開自己傳給可魯的誠懇私訊，勸可魯別動輒用「踢出群組」威脅不同意見的人、要學會換位思考；然而看到可魯隨後的回應毫無改變，失望留下一句 <code>@可魯踢我吧</code>（第 5970 行）後被踢／離群。</li>
+</ol>
+</li>
+</ul>
+<h4 id="28-zephyrestia--117-%E5%89%87%E8%A8%8A%E6%81%AF">28. <code>zephyrestia</code> — 117 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code>、<code>yotsuba.plus</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>、<code>laoliandexinren</code>、<code>yxt6826</code>、<code>manhuazhai</code>、<code>naixi_sleepy</code>、<code>bbccdd_123</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>頻道內最核心的邏輯與法理辯手。主張「誰主張、誰舉證」：既然 <code>froliz</code> 已提出過往言行一致的證據證明自己罵的是舊影子，不具備侮辱可魯的「主觀故意」，那麼只有舊影子本人有資格要 <code>froliz</code> 道歉。</li>
+<li>指出道德標準因人而異，不能用個人道德感強加法律責任，並感嘆可魯把支線（打 <code>froliz</code>）開得比主線（打阿智）還大，導致焦點完全模糊。</li>
+</ul>
+</li>
+</ul>
+<h4 id="29-raccoon1109%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E6%B5%A3%E7%86%8A--%E7%86%8A%E5%93%A5%E5%93%A5--%E7%8E%A5%E7%AA%A9-105-%E5%89%87%E8%A8%8A%E6%81%AF">29. <code>raccoon1109</code>（顯示名稱：<strong>浣熊 / 熊哥哥 / 玥窩</strong>）— 105 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>aoi.cc</code>、<code>froliz</code>、<code>ekko0228</code>、<code>chia1427</code>、<code>154366</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>yxt6826</code>（衛央）。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>質問無故封鎖</strong>：一開群（第 121 行）就跑來問可魯，為何在自己還沒做梗圖臭他之前就被可魯封鎖？可魯回應是因為他講話帶刺、為了過濾資訊才封鎖。</li>
+<li><strong>主張私群／小圈子臭人不犯法</strong>：與 <code>yxt6826</code> 激辯台灣法律，認為在群組裡陰陽怪氣或臭人根本不構成公然侮辱或誹謗，並狂刷羅傑／館長／北投早餐複製文嘲諷。</li>
+<li><strong>痛批可魯雙標與一言堂</strong>：11/08 下午可魯解開他封鎖並道歉後，他立刻反嗆可魯「不喜歡看刺激言論，結果你粉絲（如 <code>laoliandexinren</code>）噴人智障、傻B、罵人父母，你卻因為他挺你／有訂閱就不封鎖？雙標得很可憐」，建議可魯乾脆刪掉公開群改創會員邀請制一言堂。</li>
+</ol>
+</li>
+</ul>
+<h4 id="30-yotsubaplus--73-%E5%89%87%E8%A8%8A%E6%81%AF">30. <code>yotsuba.plus</code> — 73 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code>、<code>zephyrestia</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>laoliandexinren</code>、<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>批評可魯不敢去沒上鎖的智群找正主阿智對決，反而利用自己身為 YouTuber 的流量優勢拍片公審無辜的複讀機 <code>froliz</code>，並在自己的群組內濫用踢人權力（例如踢掉討論攻略的 <code>IndeedHelp101</code>），形成不對等的權力霸凌。</li>
+<li>以「我被罵了→他不是在罵你→但我受傷了→但他不是在罵你…」完美總結下午場的無限跳針迴圈（第 6815 行）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="31-josepheast299%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E8%83%96%E8%99%8E-59-%E5%89%87%E8%A8%8A%E6%81%AF">31. <code>josepheast299</code>（顯示名稱：<strong>胖虎</strong>）— 59 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>aoi.cc</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>yxt6826</code>、<code>laoliandexinren</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>11/07 中午原本出於好意，勸正在發燒休息的可魯先把第一部影片暫時下架或轉私人，以免誤傷無辜及招來更多黑粉，結果被可魯動怒反嗆「我沒錯為什麼要下架」；此後轉而支持 <code>froliz</code> 與 <code>ekko0228</code>，嘲笑護航派在邏輯死胡同裡打轉。</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-valkroyxxmn--29-%E5%89%87%E8%A8%8A%E6%81%AF">32. <code>valkroy_xxmn</code> — 29 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>、<code>pray06917</code>。</li>
+<li><strong>主要想爭的話題</strong>：起初還留言要可魯好好休息，但在看完 11/08 下午可魯對 <code>ekko0228</code> 的逼問後大失所望，直接開嗆：「別再說什麼幫幫我、支持我、我好累、我走出第一步這些詞了，這些都不是溝通而是逃避！這幾天下來一堆人都對可魯你改觀喔，自己思考一下為什麼呢」（第 6378、6611 行）。</li>
+</ul>
+<h4 id="33-doomsdayfate--23-%E5%89%87%E8%A8%8A%E6%81%AF">33. <code>doomsdayfate</code> — 23 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>IndeedHelp101</code>。</li>
+<li><strong>對立面</strong>：<code>keru520</code>。</li>
+<li><strong>主要想爭的話題</strong>：專門質疑可魯的「雙重標準」——為何 <code>IndeedHelp101</code> 只是在群裡討論三選一角色（火泰尼 vs 木老頭）與可魯意見不同就被踢？為何有人請可魯處理群內人身攻擊反被踢？為何第一部影片只抓複製貼上的 <code>froliz</code>，卻不抓原句的發文者？</li>
+</ul>
+<h4 id="34-monodrama1--16-%E5%89%87%E8%A8%8A%E6%81%AF">34. <code>monodrama1_</code> — 16 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>。</li>
+<li><strong>對立面</strong>：<code>epasserby</code>、<code>tiger_rene</code>。</li>
+<li><strong>主要想爭的話題</strong>：替 <code>froliz</code> 辯護，指出「既然他真的不認識可魯，就不可能知道別人在影射誰；如果一開始就預設立場認為他不可能不認識，那就沒有聊下去的必要」。</li>
+</ul>
+<h4 id="35-dtech666--16-%E5%89%87%E8%A8%8A%E6%81%AF">35. <code>dtech666</code> — 16 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>lonelylife.</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>（鯊寳）、<code>keru520</code>。</li>
+<li><strong>主要想爭的話題</strong>：嘲諷 <code>9__ix</code> 與可魯群的同溫層一言堂，並在 11/07 晚間被可魯踢出伺服器前興奮發訊慶祝自己「榮譽被 Ban」（第 1373 行）。</li>
+</ul>
+<h4 id="36-lonelylife--15-%E5%89%87%E8%A8%8A%E6%81%AF">36. <code>lonelylife.</code> — 15 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>dtech666</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>（鯊寳）。</li>
+<li><strong>主要想爭的話題</strong>：與 <code>9__ix</code> 對嗆，嘲笑 <code>9__ix</code> 動不動就幫人扣「智孝子」帽子與封鎖別人。</li>
+</ul>
+<h4 id="37-kuanlin--13-%E5%89%87%E8%A8%8A%E6%81%AF">37. <code>kuan_lin</code> — 13 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：偏向 <code>froliz</code> / <code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>、<code>keru520</code>。</li>
+<li><strong>主要想爭的話題</strong>：指出「影＝可魯」根本不符合 E7 普世認知，並勸可魯「你可能覺得自己很誠懇，但我建議你先關掉通知喝點香草茶冷靜一下」（第 6464 行）。</li>
+</ul>
+<h4 id="38-reimuuuu--10-%E5%89%87%E8%A8%8A%E6%81%AF">38. <code>reimuuuu</code> — 10 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>。</li>
+<li><strong>主要想爭的話題</strong>：聲援 <code>froliz</code> 與 <code>ekko0228</code>，提醒他們別跟偏激護航仔一般見識、去吃點好的。</li>
+</ul>
+<h4 id="39-flyinfantasy--1-%E5%89%87%E9%95%B7%E6%96%87%E7%AC%AC-5517%E2%80%935542-%E8%A1%8C">39. <code>flyinfantasy</code> — 1 則長文（第 5517–5542 行）</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>IndeedHelp101</code> (HELP)、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：質疑 <code>keru520</code> 的一言堂作風。</li>
+<li><strong>主要想爭的話題</strong>：潛水萌新發表感言，感謝可魯的新手攻略，但也誠實指出可魯從「火泰尼 vs 木老頭事件」、「小泡芙與響指 GVG 評價」、踢走教會大家打 GVG 的 <code>IndeedHelp101</code>、到約談中立的 <code>ekko0228</code>，只要任何人講話不如可魯的意就會被約談或請離群組，「如果可魯覺得只能接受挺你的人的看法，那其實把群設為私人就好了，被說一言堂又錯在哪呢？」</li>
+</ul>
+<h4 id="40-%E6%8F%90%E5%8F%8A%E4%B9%8B%E8%A2%AB%E8%B8%A2%E9%97%9C%E9%8D%B5%E4%BA%BA%E7%89%A9indeedhelp101-help--help%E4%BD%AC">40. <strong>提及之被踢關鍵人物：<code>IndeedHelp101</code> (HELP / Help佬)</strong></h4>
+<ul>
+<li><strong>背景與爭點</strong>：原可魯群內的熱心高端玩家（教導許多群友 GVG 與角色配置），因在群內針對新手三選一（認為火泰尼也可選，不一定要聽可魯的只選木老頭）及角色評價提出不同看法，加上在直播聊天室發言打斷可魯，遭到可魯踢出群組，成為眾人批評可魯「一言堂、容不下異見」的導火線之一。</li>
+</ul>
+<hr>
+<h3 id="%E5%9B%9B%E4%B8%AD%E7%AB%8B%E5%88%86%E6%9E%90-%EF%BC%8F-%E7%A7%A9%E5%BA%8F%E7%B6%AD%E8%AD%B7-%EF%BC%8F-%E8%AA%BF%E8%A7%A3%E8%88%87%E8%8B%A6%E5%8F%A3%E5%A9%86%E5%BF%83%E5%8B%B8%E6%9E%B6%E6%B4%BE17-%E4%BA%BA">四、中立分析 ／ 秩序維護 ／ 調解與苦口婆心勸架派（17 人）</h3>
+<h4 id="41-asanojiii--494-%E5%89%87%E8%A8%8A%E6%81%AF%E5%85%A8%E9%A0%BB%E9%81%93%E7%99%BC%E8%A8%80%E9%87%8F%E7%AC%AC-3-%E5%90%8D">41. <code>asano_jiii</code> — 494 則訊息（全頻道發言量第 3 名）</h4>
+<ul>
+<li><strong>同陣線</strong>：試圖調解 <code>keru520</code> 與 <code>ekko0228</code>；後期與 <code>dorgon4834</code>、<code>er_ha.</code>、<code>into_the_spray.</code> 一起搞笑歪樓。</li>
+<li><strong>對立面</strong>：喝止雙方暴走群友（如叫 <code>laoliandexinren</code>、<code>yxt6826</code> 閉嘴別幫倒忙）；下午一度與 <code>ekko0228</code>、<code>zephyrestia</code> 辯論複讀的責任。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>認為「複讀反諷貼文」本身有爭議，但「拍片公審」導致事態惡化</strong>：認為 <code>froliz</code> 雖然無心，但複製貼上嘲諷文仍難辭其咎；同時也點出 <code>froliz</code> 之所以不肯道歉並把事情鬧大，是因為可魯拍第二部影片將他暴露於公眾視野遭網暴。</li>
+<li><strong>全力搶救可魯與 <code>ekko0228</code> 的友情</strong>：在 11/08 下午可魯與 <code>ekko0228</code> 對峙時，不斷用大字體 <code># 你各位先冷靜 / 你各位閉閉</code> 喝止旁邊開嘲諷的護航仔，並截圖教可魯如何開啟 Discord「慢速模式（發言冷卻時間）」、苦勸可魯「人在情緒上做出的選擇只會讓你失去更多朋友，快關通知去休息」。</li>
+<li><strong>放棄調解化身樂子人</strong>：在目睹可魯與 <code>ekko0228</code> 無限迴圈且晚間直播毫無改變後，自嘲「就我一個北七在認真想要怎麼處理，我應該早點當樂子人」，隨後加入黃油與狼人殺閒聊。</li>
+</ol>
+</li>
+</ul>
+<h4 id="42-0blink0%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1lin-109-%E5%89%87%E8%A8%8A%E6%81%AF">42. <code>0b_lin_k0</code>（顯示名稱：<strong>Lin</strong>）— 109 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>（認同其被誤會）、<code>ekko0228</code>、<code>dorgon4834</code>、<code>tujizhengyi_47124</code>、<code>ting.</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>（鯊寳）、<code>epasserby</code>、<code>manhuazhai</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li><strong>捍衛溝通頻道秩序</strong>：在 11/07 下午可魯發燒睡覺期間，不斷用 <code>#</code> 號超大字體喝斥外人閉嘴，要求把版面留給當事人可魯與 <code>froliz</code>。</li>
+<li><strong>大戰 <code>9__ix</code>（鯊寳）</strong>：痛批 <code>9__ix</code> 趁群主睡覺時在頻道內到處引戰、約架、把所有不同意見者打成「智孝子」，諷刺「這裡不是可魯的一言堂，是鯊寳的一言堂」。認為可魯和 <code>froliz</code> 都是智群霸凌風氣下的受害者，建議可魯醒來後修改影片把無辜的 <code>froliz</code> 剪掉即可和平落幕。</li>
+</ul>
+</li>
+</ul>
+<h4 id="43-allen0103--71-%E5%89%87%E8%A8%8A%E6%81%AF">43. <code>allen0103</code> — 71 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立偏理解 <code>froliz</code> 與 <code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>laoliandexinren</code>、<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>身為只待在可魯群的純可魯粉，理性指出 <code>froliz</code> 雖然因為愛複讀導致每場嘲諷都有他的身影，但罵舊影子是事實（以「馬英九卸任很久我朋友還是會靠北他」為例說明人退坑事蹟仍在）。</li>
+<li>在 11/08 下午直言可魯逼問 <code>ekko0228</code> 的二選一「很像記者誘導性發言」，並痛罵 <code>laoliandexinren</code> 跟 <code>yxt6826</code> 兩位狂噴人的護航仔是在「幫可魯招黑」，求可魯開啟發言限制管一下偏激粉絲。</li>
+</ul>
+</li>
+</ul>
+<h4 id="44-aixin--65-%E5%89%87%E8%A8%8A%E6%81%AF">44. <code>_aixin</code> — 65 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：與各方皆保持友好，居中協調。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li><strong>溝通頻道的催生者與懶人包整理員</strong>：當初就是他向可魯提議開設這個溝通頻道來解開誤會；在混戰中多次整理「超級懶人包」，幫大家翻譯 <code>froliz</code> 的英文語意與美國時差問題。</li>
+<li>後期感嘆可魯「S3（大招）開錯人」，並在 11/08 下午向 <code>@可魯</code> 提出兩點具體建議：(1) 找幾位熟悉的人擔任 DC 管理員協助設定頻道權限；(2) 狀態不好時絕對不要馬上處理事情，先斷網休息。</li>
+</ul>
+</li>
+</ul>
+<h4 id="45-hawx116--62-%E5%89%87%E8%A8%8A%E6%81%AF">45. <code>hawx116</code> — 62 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：法律實務與邏輯分析派。</li>
+<li><strong>對立面</strong>：無特定對立（兩邊觀點都有吐槽）。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>前期以法律實務潑冷水，指出在 Discord 用代稱嘲諷要告贏妨害名譽或公然侮辱難度極高、不符時間成本。</li>
+<li>後期在可魯與 <code>ekko0228</code> 爭執時，一再強調法律上**「有無主觀犯意」與「有無客觀侵害事實」必須分開討論**；但也補充說明，<code>froliz</code> 稱自己是在罵「舊影子」的說法，在刑事法庭上很常被法官視為「幽靈抗辯／臨訟托詞（抓鬼抗辯）」，不見得會被採信。</li>
+</ul>
+</li>
+</ul>
+<h4 id="46-epasserby%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1epasserby%F0%9F%AB%AA-58-%E5%89%87%E8%A8%8A%E6%81%AF">46. <code>epasserby</code>（顯示名稱：<strong>ePasserby🫪</strong>）— 58 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：完全中立的「第三方獨立調查員」。</li>
+<li><strong>對立面</strong>：曾與 <code>froliz</code>、<code>monodrama1_</code> 辯論複讀責任；曾被 <code>0b_lin_k0</code> 嫌話太多打擾秩序。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>與 <code>froliz</code> 辯論「公開平台定義」與「複讀機的道德責任」</strong>：認為數千人的 DC 群在台灣法律下屬於公開平台，且「謠言止於智者」，複讀別人的霸凌言論在客觀上會讓第三方與可魯認為是一夥的，不能說複製貼上就 100% 免責。</li>
+<li><strong>親入智群搜出證明 <code>froliz</code> 清白的關鍵鐵證</strong>：他實際進智群翻找歷史紀錄，在 11/08 16:36（第 7001 行）貼出關鍵截圖，證明當智群其他人早就把「影群」當成可魯群時，<code>froliz</code> 卻還在問「影群是影子的群嗎？」，<strong>鐵證如山地幫 <code>froliz</code> 洗刷了「假裝不認識可魯」的嫌疑</strong>，並幫忙緩頰解釋可魯拍片只是習慣用影片代替打字回覆。</li>
+</ol>
+</li>
+</ul>
+<h4 id="47-tujizhengyi47124%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E7%AA%81%E6%93%8A%E6%AD%A3%E7%BE%A9raiser-52-%E5%89%87%E8%A8%8A%E6%81%AF">47. <code>tujizhengyi_47124</code>（顯示名稱：<strong>突擊正義RAISER</strong>）— 52 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>0b_lin_k0</code>、<code>asano_jiii</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code> 及所有在頻道內插嘴宣洩情緒的人。</li>
+<li><strong>主要想爭的話題</strong>：香港群友，從頭到尾不斷重申「這個頻道只是讓可魯跟阿哥拉解開誤會的專區，其他人全部收聲（閉嘴）！」；在 11/08 下午看可魯情緒失控不斷逼問 <code>ekko0228</code> 時，連續十幾次留言哀求 <code>@可魯 夠了，你冷靜一下，抽離自己休息吧，意氣用事無解</code>。</li>
+</ul>
+<h4 id="48-rezistemacooper--49-%E5%89%87%E8%A8%8A%E6%81%AF">48. <code>rezistemacooper</code> — 49 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：前期挺 <code>keru520</code>，後期認同 <code>ekko0228</code> 與 <code>asano_jiii</code>。</li>
+<li><strong>對立面</strong>：前期罵 <code>froliz</code> 與 <code>ekko0228</code>，後期批評 <code>keru520</code> 固執與倒情緒垃圾。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li><strong>態度轉變最具代表性的群友</strong>：11/08 16:34 進場時原本因為看過可魯攻略想幫可魯說話，強硬主張「喜歡在公共場合玩梗臭人就要有燒到人的覺悟，該道歉就道歉講一堆屁話」。</li>
+<li>然而在觀察可魯與 <code>ekko0228</code> 的對話及晚間直播後，他在 16:44～19:57 轉向表示：「我沒有挺到底喔，我現在覺得可魯講話很奇怪，他不會溝通啊，就是拉人站隊、倒情緒垃圾而已」，並勸 <code>ekko0228</code> 別再跟情緒上頭的可魯浪費時間。</li>
+</ul>
+</li>
+</ul>
+<h4 id="49-naixisleepy%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E5%A5%B6%E6%98%94%E7%88%B9%E7%B5%B2naixi-48-%E5%89%87%E8%A8%8A%E6%81%AF">49. <code>naixi_sleepy</code>（顯示名稱：<strong>奶昔爹絲NaiXi</strong>）— 48 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：原為死忠挺 <code>keru520</code> 粉絲，後與 <code>froliz</code> 和解。</li>
+<li><strong>對立面</strong>：智群霸凌者；最後對 <code>keru520</code> 徹底心碎。</li>
+<li><strong>主要想爭的話題</strong>：
+<ol>
+<li><strong>與 <code>froliz</code> 從英文筆戰到誠懇道歉</strong>：起初用英文與 <code>froliz</code> 爭論智群是公開伺服器而非內部玩笑；但在看懂 <code>froliz</code> 真的不知道「影＝可魯」後，主動標註 <code>@froliz sorry for my non-sense actions</code> 誠懇道歉，獲得 <code>froliz</code> 尊重。</li>
+<li><strong>心碎退坑</strong>：後續貼出多張截圖證明智群其他人確實有在臭可魯；但在 11/08 15:12（第 5871–5935 行）看到可魯在第二、三部直播中失去理智、聽不進勸告並驅趕群友，痛心留言「我真的對可魯感到心碎」，宣布退出所有中文 E7 社群。</li>
+</ol>
+</li>
+</ul>
+<h4 id="50-ting--36-%E5%89%87%E8%A8%8A%E6%81%AF">50. <code>ting.</code> — 36 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>0b_lin_k0</code>。</li>
+<li><strong>對立面</strong>：<code>9__ix</code>（鯊寳）。</li>
+<li><strong>主要想爭的話題</strong>：在 11/07 下午好言相勸 <code>9__ix</code> 不要在可魯的溝通頻道裡到處引戰，給當事人空間，結果直接被 <code>9__ix</code> 扣上「智孝子」帽子並封鎖；隔天下午回來感嘆「這邊終於開始理智了嗎」。</li>
+</ul>
+<h4 id="51-windjing--35-%E5%89%87%E8%A8%8A%E6%81%AF">51. <code>windjing</code> — 35 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立法律分析。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：自稱在法院工作，貼出台灣法院關於網路遊戲／Discord 妨害名譽的真實裁判書，分析「特定多數人」與「指涉對象」的認定標準；直言可魯與 <code>froliz</code> 兩邊認知完全不在同一個頻率上，雞同鴨講不可能要得到道歉，真想要道歉不如直接委託律師提告。</li>
+</ul>
+<h4 id="52-acpild--28-%E5%89%87%E8%A8%8A%E6%81%AF">52. <code>acpild</code> — 28 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立偏同情 <code>froliz</code>。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：以路人玩家角度表示「世界很大，根本不可能認識全部的小實況主」，認為 <code>froliz</code> 在罵自己討厭的 B（舊影子），卻莫名其妙被不認識的 A（可魯）拉椅子對號入座背鍋，實在很無辜；呼籲既然誤會解開了就該結束別再追究。</li>
+</ul>
+<h4 id="53-nakamuraran%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E9%AA%91%E5%A3%AB%E7%8E%8B-%E4%B8%AD%E6%9D%91%E5%B5%90-26-%E5%89%87%E8%A8%8A%E6%81%AF">53. <code>nakamuraran</code>（顯示名稱：<strong>骑士王-中村嵐</strong>）— 26 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：關心 <code>keru520</code> 的和平派。</li>
+<li><strong>對立面</strong>：阿智（認為阿智才是真小人）。</li>
+<li><strong>主要想爭的話題</strong>：撰寫長文苦勸 <code>@可魯</code>，指出真正的罪魁禍首是阿智與智群帶風向的人，勸可魯跟無心誤傷的 <code>froliz</code> 互相道個歉、化干戈為玉帛，把精力留著對付真正的始作俑者。</li>
+</ul>
+<h4 id="54-mioywl--19-%E5%89%87%E8%A8%8A%E6%81%AF">54. <code>mioywl</code> — 19 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立調解（後期同情 <code>ekko0228</code>）。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：澳洲香港玩家，前期以中英雙語嘗試調解 <code>froliz</code> 與可魯，指出 <code>froliz</code> 複讀當下確實不知情，但客觀上誤傷了可魯，而可魯拍第二部片則踩到了 <code>froliz</code> 底線；後期勸 <code>ekko0228</code>「不要試圖叫醒本來就不在同一個認知的人，講再多次他們也永遠無法理解」（第 7101 行）。</li>
+</ul>
+<h4 id="55-doke7591--10-%E5%89%87%E8%A8%8A%E6%81%AF">55. <code>doke7591</code> — 10 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：為 <code>keru520</code> 出謀劃策的策略派。</li>
+<li><strong>對立面</strong>：阿智。</li>
+<li><strong>主要想爭的話題</strong>：在 11/08 凌晨與下午痛陳利害，告訴可魯原本這局只要集中火力打死官方主播阿智就穩贏了，結果可魯卻開地圖砲 AOE 抓路人 <code>froliz</code> 跟自己朋友打，「在你的操作之下阿智都已經變成局外人了，昨天還看到他在求懶人包，你把台下的人拉上去打、把該決鬥的人推去台下看戲幹嘛？」建議可魯刪掉前兩部片，重拍一部 9 分鐘精華片專打阿智（第 5395、5498 行）。</li>
+</ul>
+<h4 id="56-holychoi--4-%E5%89%87%E8%A8%8A%E6%81%AF">56. <code>holychoi</code> — 4 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立分析。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：精準分析為何溝通會破局（第 7241 行）：認為 <code>froliz</code> 一進場的態度是「我有證據沒針對你，所以你要跟我道歉」，少了一句「雖然我不是要攻擊你，但沒察覺話語冒犯到你對不起」，導致雙方卡死在認知落差；同時感嘆太多局外人衝進來插嘴開新戰場，導致一輩子都回不到阿智的主線。</li>
+</ul>
+<h4 id="57-dylan856982738--3-%E5%89%87%E8%A8%8A%E6%81%AF">57. <code>dylan8569_82738</code> — 3 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：純玩遊戲群友。</li>
+<li><strong>對立面</strong>：把吵架巴哈文貼到大廳的人。</li>
+<li><strong>主要想爭的話題</strong>：抗議有人把巴哈吵架貼文貼到 DC 的「綜合大廳」，呼籲「這區才是吵架區，大廳是聊開心的，我們其他人只想單純玩遊戲」。</li>
+</ul>
+<hr>
+<h3 id="%E4%BA%94%E6%99%BA%E7%BE%A4%E8%A6%AA%E5%8F%8B%E5%8A%A9%E9%99%A3-%EF%BC%86-%E6%B7%B1%E5%A4%9C%EF%BC%8F%E5%8D%88%E5%BE%8C%E5%90%83%E7%93%9C%E5%8F%8D%E4%B8%B2%E6%AD%AA%E6%A8%93%E7%BE%A4%E7%9C%BE18-%E4%BA%BA">五、智群親友助陣 ＆ 深夜／午後吃瓜、反串、歪樓群眾（18 人）</h3>
+<h4 id="58-officialpikachu%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1official-pikachu-255-%E5%89%87%E8%A8%8A%E6%81%AF">58. <code>officialpikachu</code>（顯示名稱：<strong>official Pikachu</strong>）— 255 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>、<code>fire8798</code>、<code>pero5454</code>、<code>zm_88</code>（半夜聊寶可夢）。</li>
+<li><strong>對立面</strong>：反串釣魚 <code>keru520</code>、<code>hunteradc</code>、<code>3456319</code>、<code>bbccdd_123</code>、<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>自稱來自智群的「0號觀眾／老串子」。全場最高強度的反串樂子人，假裝是崇拜可魯的萌新，實則句句暗酸可魯的遊戲理解（例如：「感謝可魯大大叫大家不要抽保健室（綠璐璐卡／尤하），讓我整整一年沒辦法玩 RTA」、「請問可魯群有 RTA 傳說或王者框的高手嗎？」）。</li>
+<li>半夜在頻道內調侃大家互告開吉，並帶頭與群友大聊日本成人片番號（如 <code>SSIS-685</code>）、股票與寶可夢，成功把吵架頻歪成深夜閒聊頻。</li>
+</ul>
+</li>
+</ul>
+<h4 id="59-dorgon4834%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E7%B5%A6%E6%88%91%E5%80%8B%E9%9D%A2%E5%AD%90--%E7%9C%8B%E4%B8%8D%E5%88%B0%E6%88%91%E7%94%A8%E6%9A%97%E7%86%8A%E9%9B%AA%E8%8A%B1%E9%96%8B%E9%96%83%E9%AC%A5%E7%A5%9E-238-%E5%89%87%E8%A8%8A%E6%81%AF">59. <code>dorgon4834</code>（顯示名稱：<strong>給我個面子 / 看不到我用暗熊+雪花開閃鬥神</strong>）— 238 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>0b_lin_k0</code>、<code>asano_jiii</code>、<code>er_ha.</code>、<code>into_the_spray.</code>。</li>
+<li><strong>對立面</strong>：無（和平吃瓜與搞笑歪樓）。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>剛入坑幾個月的 Steam 服新手。在混戰中不斷用動漫梗（「鬥神開領域」、「3000萬世的複製文」）播報戰況，同情可魯發燒還得一個人面對幾千條訊息、感嘆群內沒有管理員幫他分擔，但也認為可魯不該抓著 <code>froliz</code> 打。</li>
+<li>在 11/08 傍晚與 <code>er_ha.</code>、<code>asano_jiii</code> 大聊特聊暗黑黃油 RPG《Black Souls》（格林、小紅帽、愛麗絲、壽司），刻意用局外話題把緊繃的吵架頻道洗成搞笑閒聊區。</li>
+</ul>
+</li>
+</ul>
+<h4 id="60-fire8798%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E9%98%BF%E7%8B%90-104-%E5%89%87%E8%A8%8A%E6%81%AF">60. <code>fire8798</code>（顯示名稱：<strong>阿狐</strong>）— 104 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>、<code>froliz</code>、<code>officialpikachu</code>、<code>rand0lph</code>、<code>pero5454</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>（衛央）、<code>laoliandexinren</code>。</li>
+<li><strong>主要想爭的話題</strong>：幫 <code>ekko0228</code> 與 <code>froliz</code> 助陣，吐槽 <code>yxt6826</code> 拿 AI 問法律與抓代打是邏輯死亡；半夜與眾人狂刷複製文（北投豐盛號早餐、統神、館長、五條悟）與番號。</li>
+</ul>
+<h4 id="61-erha--79-%E5%89%87%E8%A8%8A%E6%81%AF">61. <code>er_ha.</code> — 79 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>dorgon4834</code>、<code>asano_jiii</code>。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：耐著性子爬完幾千樓的吃瓜群眾（表示「收穫了兩張梗圖」），在 11/08 17:20 後成為「黃油歪樓區罪魁禍首」，與 <code>dorgon4834</code> 深入探討《Black Souls》的 NTR 與外神劇情、以及「與魔性的她 vs 妖狐的深夜直播」哪款黃油比較好玩。</li>
+</ul>
+<h4 id="62-intothespray%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E8%B3%BD%E9%9D%88%E7%B3%A7%E6%AF%8D%E8%B1%AC%E6%BB%BE%E5%96%87%E5%B9%B9-75-%E5%89%87%E8%A8%8A%E6%81%AF">62. <code>into_the_spray.</code>（顯示名稱：<strong>賽靈糧母豬滾喇幹</strong>）— 75 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>asano_jiii</code>、<code>dorgon4834</code>、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：嘲諷 <code>9__ix</code>（按泡那個）與變異路人。</li>
+<li><strong>主要想爭的話題</strong>：
+<ul>
+<li>11/08 16:40 進場的毒舌樂子人。一針見血總結整場鬧劇：「<strong>真正該被處理的事主（阿智）神隱沒事，最粗暴嘴臭的人（<code>9__ix</code>）安全下庄，反而是可魯追著路人打到變事主，現在則是兩邊的路人變異成事主繼續互毆</strong>」，並神比喻為「進須彌還沒進城就被抓去解森林書支線 N 百小時，主線一點都沒動」（第 7309–7402 行）。</li>
+<li>隨後在頻道內發起搞笑的「阿智狼人殺（在場誰是阿智，我先跳預言家拿銀水灌你滿臉）」與抽卡保底幹話。</li>
+</ul>
+</li>
+</ul>
+<h4 id="63-pero5454--60-%E5%89%87%E8%A8%8A%E6%81%AF">63. <code>pero5454</code> — 60 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>officialpikachu</code>、<code>fire8798</code>、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：深夜場陪聊與助陣，嘲諷 <code>yxt6826</code> 跳針，並與 <code>officialpikachu</code> 交流日本女優番號與投資理財。</li>
+</ul>
+<h4 id="64-rand0lph--56-%E5%89%87%E8%A8%8A%E6%81%AF">64. <code>rand0lph</code> — 56 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>froliz</code>、<code>ekko0228</code>、<code>fire8798</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>、<code>laoliandexinren</code>。</li>
+<li><strong>主要想爭的話題</strong>：力挺 <code>froliz</code> 與 <code>ekko0228</code>，在深夜與隔天下午嘲諷 <code>yxt6826</code> 是法盲、笑看護航派鬼打牆。</li>
+</ul>
+<h4 id="65-tigerrene--42-%E5%89%87%E8%A8%8A%E6%81%AF">65. <code>tiger_rene</code> — 42 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立吃瓜群友（與 <code>asano_jiii</code>、<code>er_ha.</code> 閒聊）。</li>
+<li><strong>對立面</strong>：吐槽 <code>nihaoa9176</code>（自己叫可魯踢他，出去卻說自己被踢）。</li>
+<li><strong>主要想爭的話題</strong>：起初好奇「E7 老玩家真的有人不認識影子嗎？」，後續關心可魯開台時間、貼出巴哈場外最新討論串連結，並跟著 <code>asano_jiii</code> 聊光凱隆與光泰悟。</li>
+</ul>
+<h4 id="66-154366%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1%E5%A4%A7%E5%86%AC%E8%80%81%E5%B8%AB-33-%E5%89%87%E8%A8%8A%E6%81%AF">66. <code>154366</code>（顯示名稱：<strong>大冬老師</strong>）— 33 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>aoi.cc</code>、<code>raccoon1109</code>、<code>fire8798</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：深夜場知名「複製文刷屏機」，狂貼各種長篇網路複製文（北投早餐、羅傑、館長等）來洗版惡搞 <code>yxt6826</code>，連同陣線的 <code>aoi.cc</code> 都笑罵叫他滾。</li>
+</ul>
+<h4 id="67-nthyunxi--32-%E5%89%87%E8%A8%8A%E6%81%AF">67. <code>nth_yunxi</code> — 32 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>、<code>fire8798</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：在深夜場圍觀 <code>yxt6826</code> 大戰眾人，吐槽 <code>yxt6826</code> 的「臭人業力論」與代打指控。</li>
+</ul>
+<h4 id="68-libohan6679--30-%E5%89%87%E8%A8%8A%E6%81%AF">68. <code>libohan6679</code> — 30 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>asano_jiii</code>、<code>into_the_spray.</code>、<code>jerrymin</code>。</li>
+<li><strong>對立面</strong>：質疑 <code>laoliandexinren</code> 是剛創兩天的小號。</li>
+<li><strong>主要想爭的話題</strong>：11/08 傍晚進場吐槽可魯群「不先一致對外打大魔王（阿智），反而先斬意中人（砍朋友 <code>ekko0228</code>）」，接著加入「搶老婆（曹賊）」與狼人殺搞笑歪樓。</li>
+</ul>
+<h4 id="69-sion9139--28-%E5%89%87%E8%A8%8A%E6%81%AF">69. <code>sion9139</code> — 28 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立吃瓜群友。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：分享自己過去跑法院提告最後收到不起訴處分的經驗，勸大家別輕易提告（「花時間跑警局法院換來不起訴，外加以後別人可以法院認證合理稱呼你影群，超虧」），並吐槽大家都在解支線任務沒人管主線阿智。</li>
+</ul>
+<h4 id="70-chia1427--26-%E5%89%87%E8%A8%8A%E6%81%AF">70. <code>chia1427</code> — 26 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>raccoon1109</code>、<code>ekko0228</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>、<code>keru520</code>。</li>
+<li><strong>主要想爭的話題</strong>：調侃「出名如 Faker 也不一定每個人都認識，何況小眾實況主」，並刷館長（陳之漢）複製文歪樓。</li>
+</ul>
+<h4 id="71-coolguyho--25-%E5%89%87%E8%A8%8A%E6%81%AF">71. <code>coolguyho</code> — 25 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>、<code>fire8798</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：在深夜場與眾人一起嘲諷 <code>yxt6826</code> 的 AI 法律諮詢與跳針言論。</li>
+</ul>
+<h4 id="72-jerrymin--23-%E5%89%87%E8%A8%8A%E6%81%AF">72. <code>jerrymin</code> — 23 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>asano_jiii</code>、<code>into_the_spray.</code>、<code>libohan6679</code>。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：11/08 傍晚吃瓜吐槽「不是沒人講真話，是講的都飛出去（被踢）了，欸扣還沒飛只是因為是朋友」、「怎麼跟政治一樣為了吵而吵」，隨後加入狼人殺與曹家軍（人妻）閒聊。</li>
+</ul>
+<h4 id="73-rumee8498--21-%E5%89%87%E8%A8%8A%E6%81%AF">73. <code>rumee8498</code> — 21 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>、<code>fire8798</code>。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>。</li>
+<li><strong>主要想爭的話題</strong>：深夜場貼梗圖嘲諷 <code>yxt6826</code> 鬼打牆與跳針。</li>
+</ul>
+<h4 id="74-missace00--20-%E5%89%87%E8%A8%8A%E6%81%AF">74. <code>missace_00</code> — 20 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：中立吃瓜。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：貼鳴潮／猴子 GIF 表情包看戲，好奇發問「拍影片公審有沒有構成引導網暴？」。</li>
+</ul>
+<h4 id="75-star7530%E9%A1%AF%E7%A4%BA%E5%90%8D%E7%A8%B1cc-15-%E5%89%87%E8%A8%8A%E6%81%AF">75. <code>star7530</code>（顯示名稱：<strong>Cc</strong>）— 15 則訊息</h4>
+<ul>
+<li><strong>同陣線</strong>：<code>ekko0228</code>（在頻道內跟欸扣開玩笑調情喊老公／回家）。</li>
+<li><strong>對立面</strong>：無。</li>
+<li><strong>主要想爭的話題</strong>：完全無視戰火，在 <code>ekko0228</code> 激戰時突然插話叫「老師先回家」、「明明我才是你老婆，欸扣你幹嘛不理我」，引發旁邊群友「曹賊行動」搞笑支線。</li>
+</ul>
+<h4 id="76%E2%80%9379-%E5%85%B6%E4%BB%96%E6%B7%B1%E5%A4%9C%E5%A0%B4%E5%8A%A9%E9%99%A3%E8%88%87%E5%90%83%E7%93%9C%E7%BE%A4%E5%8F%8Bshouzixu-12-%E5%89%87tatakaioao-11-%E5%89%87ghsinhyu7th-11-%E5%89%87woshiwo555555-11-%E5%89%87">76–79. 其他深夜場助陣與吃瓜群友：<code>shouzixu</code> (12 則)、<code>tatakaioao</code> (11 則)、<code>ghsinhyu7th</code> (11 則)、<code>woshiwo555555</code> (11 則)</h4>
+<ul>
+<li><strong>同陣線</strong>：偏向 <code>ekko0228</code> / <code>froliz</code> 或純看熱鬧。</li>
+<li><strong>對立面</strong>：<code>yxt6826</code>（衛央）。</li>
+<li><strong>主要想爭的話題</strong>：在 11/08 凌晨 02:00～03:30 期間圍觀 <code>yxt6826</code> 單挑眾人，<code>woshiwo555555</code> 與 <code>shouzixu</code> 吐槽 <code>yxt6826</code> 邏輯死亡與雙標，<code>ghsinhyu7th</code> 則在下午場起鬨「不要冷靜、繼續盤、還是知情的都被踢光了？」。</li>
+</ul>
+
+</body>
+</html>
